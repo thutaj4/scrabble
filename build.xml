@@ -1,0 +1,29 @@
+<project name="Scrabble" default="dist" basedir=".">
+	<description>
+		A Swing-based Scrabble game in Java. Written multiple times as final projects in
+		AP Computer Science and Advanced Programming in high school.
+	</description>
+
+	<property name="src" location="src/" />
+	<property name="build" location="build/" />
+	<property name="dist" location="dist/" />
+
+
+	<target name="init">
+
+	</target>
+
+
+	<target name="compile" depends="init">
+
+	</target>
+
+
+	<target name="dist" depends="compile">
+
+	</target>
+
+	<target name="clean">
+
+	</target>
+</project>
