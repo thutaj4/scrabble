@@ -1,4 +1,4 @@
-scrabble
+Scrabble!
 ========
 
 This is a Swing-based implementation of the Scrabble board game in Java. It was
