@@ -7,7 +7,7 @@ of AP Computer Science II and Advanced Programming. It utilizes many of
 the core concepts learned in the classes and more. 
 
 I wrote this during the infancy of my computer science career, so the code is not
-particularly pretty or well-designed. I'd redo the whole thing, but I'd rather
+particularly pretty or well-structured. I'd redo the whole thing, but I'd rather
 move on to learn new things instead of stagnating with this for too long.
 
 
