@@ -5,7 +5,7 @@ This is a Swing-based implementation of the Scrabble board game in Java. It was
 written over the course of half a school year (1 and a half trimesters) as part
 of AP Computer Science II and Advanced Programming. It utilizes many of
 the core concepts learned in the class, including searching and sorting, GUIs,
-legal tile placement algorithms, etc.
+legal tile placement and scoring algorithms, etc.
 
 Note: As this was my first real CS project, the code quality isn't superb. But as
 David Eddings, a famous American author, said with regard to becoming a good writer,
