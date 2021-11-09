@@ -24,10 +24,18 @@ public class StatusBar extends JLabel {
     }
 
     public void setPlayer() {
-	if (Scrabble.turn)
-	    player = "Player 1";
-	else
-	    player = "Player 2";
+	if (Scrabble.currentTurn.equals("playerOne")) {
+	    player = "playerOne";
+	}
+	else if (Scrabble.currentTurn.equals("playerTwo")) {
+	    player = "playerTwo";
+	}
+	else if (Scrabble.currentTurn.equals("playerThree")) {
+	    player = "playerThree";
+	}
+	else if (Scrabble.currentTurn.equals("playerFour")) {
+	    player = "playerFour";
+	}
     }
 
     public void setBagCount(int _n) {

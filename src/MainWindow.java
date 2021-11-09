@@ -275,7 +275,7 @@ public class MainWindow {
 				}
 				
 				//ChallengerGameWindow
-				Scrabble s = new Scrabble(playerOneTextField.getText(),playerTwoTextField.getText());
+				Scrabble s = new Scrabble(playerOneTextField.getText(),playerTwoTextField.getText(), playerThreeTextField.getText(),playerFourTextField.getText());
 				javax.swing.SwingUtilities.invokeLater(s);
 				frame.setVisible(false);
 			}
