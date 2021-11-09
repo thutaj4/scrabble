@@ -929,8 +929,8 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 	}
 
 	/************************** Main *****************************/
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		s = new Scrabble("test", "test2", "", "");
 		javax.swing.SwingUtilities.invokeLater(s);
-	}
+	}*/
 }

@@ -247,7 +247,8 @@ public class MainWindow {
 					return;
 				}
 				//CREATE THE PLAYERS
-			//BeginnerGameWindow window = new BeginnerGameWindow(playerOneTextField.getText(), playerTwoTextField.getText());
+			//BeginnerGameWindow
+				BeginnerHelpWindow window = new BeginnerHelpWindow();
 			frame.setVisible(false);
 			}
 			else if(challengerButton.isSelected()) {
