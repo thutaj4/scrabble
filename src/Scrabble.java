@@ -9,13 +9,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,25 +20,10 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/* This is Scrabble, the largest CS project I did in high school (at the North Carolina
- * School of Science & Mathematics). I made it back in the primordial days of my CS
- * education, when I didn't comment code, use version control, use packages, or properly
- * plan anything, among other things.
- * 
- * Code quality isn't the best, but it works.
- * 
- * WARNING: File IO and undo/redo functionality has not been implemented.
- * 
- * 
- * @author Mitch Rees-Jones
- * @created Early 2013
- * @modified 12/26/2014
- */
 public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     
     private static final long serialVersionUID = 1L;
@@ -53,12 +32,12 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     
     public static Scrabble s;
     public static Board board;
-    private StatusBar statusBar;
+//    private StatusBar statusBar;
     private JPanel bottom;
     public static Bag bag;
     public Tray p1, p2;
     private ScorePanel scorePanel;
-    private JMenuBar mbar;
+//    private JMenuBar mbar;
     public TrayTile activeTile;
     
     public static int tilesPlaced, score1, score2;
@@ -69,7 +48,6 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     private Set<String> dict;
 
     public Scrabble() {
-	super("Scrabble! - by Mitch Rees-Jones");
 	
 	// GUI
 	board = new Board();
@@ -80,9 +58,9 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 	tilesPlaced = 0;
 	score1 = 0;
 	score2 = 0;
-	statusBar = new StatusBar(bag.getBagSize());
+//	statusBar = new StatusBar(bag.getBagSize());
 	scorePanel = new ScorePanel();
-	mbar = new JMenuBar();
+//	mbar = new JMenuBar();
 	
 	// Tile placement
 	tilesPlayed = new ArrayList<TrayTile>();
@@ -101,17 +79,19 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 	setTurn(TRAY1);
 	
 	// More GUI
-	setJMenuBar(mbar);
+//	setJMenuBar(mbar);
 	addBorderLayoutObjects();
-	setIconImage(Toolkit.getDefaultToolkit().getImage("resources/icon.jpg"));
+//	setIconImage(Toolkit.getDefaultToolkit().getImage("resources/icon.jpg"));
     }
 
     public void run() {
 	makeSettings();
-	makeFileMenu();
+//	makeFileMenu();
 	makeControlsMenu();
 	makeEditMenu();
 	setMinimumSize(new Dimension(600, 700));
+	setSize(700, 800);
+	setResizable(false);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setVisible(true);
     }
@@ -124,7 +104,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 
     private void addBorderLayoutObjects() {
 	bottom.add(BorderLayout.CENTER, p2);
-	bottom.add(BorderLayout.SOUTH, statusBar);
+//	bottom.add(BorderLayout.SOUTH, statusBar);
 	getContentPane().add(BorderLayout.CENTER, board);
 	getContentPane().add(BorderLayout.EAST, scorePanel);
 	getContentPane().add(BorderLayout.NORTH, p1);
@@ -133,7 +113,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 
     private void removeBorderLayoutObjects() {
 	bottom.remove(p2);
-	bottom.remove(statusBar);
+//	bottom.remove(statusBar);
 	getContentPane().remove(board);
 	getContentPane().remove(scorePanel);
 	getContentPane().remove(p1);
@@ -157,59 +137,59 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     }
 
     /****************** Menu Methods ***********************/
-    private void makeFileMenu() {
-	JMenu fileMenu = new JMenu("File");
-	mbar.add(fileMenu);
-	JMenuItem newItem = new JMenuItem("New");
-
-	// Open & save are unimplemented.
-	JMenuItem openItem = new JMenuItem("Open");
-	JMenuItem saveItem = new JMenuItem("Save");
-
-	JMenuItem exitItem = new JMenuItem("Exit");
-	fileMenu.add(newItem);
-	fileMenu.add(openItem);
-	fileMenu.add(saveItem);
-	fileMenu.addSeparator();
-	fileMenu.add(exitItem);
-	newItem.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    	makeNewGame();
-	    }
-	});
-	openItem.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    	// Unimplemented
-	    }
-	});
-	saveItem.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    	// Unimplemented
-	    }
-
-	});
-	exitItem.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-		System.exit(0);
-	    }
-	});
-    }
+//    private void makeFileMenu() {
+////	JMenu fileMenu = new JMenu("File");
+////	mbar.add(fileMenu);
+//	JMenuItem newItem = new JMenuItem("New");
+//
+//	// Open & save are unimplemented.
+//	JMenuItem openItem = new JMenuItem("Open");
+//	JMenuItem saveItem = new JMenuItem("Save");
+//
+//	JMenuItem exitItem = new JMenuItem("Exit");
+//	fileMenu.add(newItem);
+//	fileMenu.add(openItem);
+//	fileMenu.add(saveItem);
+//	fileMenu.addSeparator();
+//	fileMenu.add(exitItem);
+//	newItem.addActionListener(new ActionListener() {
+//	    public void actionPerformed(ActionEvent e) {
+//	    	makeNewGame();
+//	    }
+//	});
+//	openItem.addActionListener(new ActionListener() {
+//	    public void actionPerformed(ActionEvent e) {
+//	    	// Unimplemented
+//	    }
+//	});
+//	saveItem.addActionListener(new ActionListener() {
+//	    public void actionPerformed(ActionEvent e) {
+//	    	// Unimplemented
+//	    }
+//
+//	});
+//	exitItem.addActionListener(new ActionListener() {
+//	    public void actionPerformed(ActionEvent e) {
+//		System.exit(0);
+//	    }
+//	});
+//    }
 
     private void makeControlsMenu() {
-	JMenu controlMenu = new JMenu("Controls");
-	mbar.add(controlMenu);
-	JMenuItem shuffleTilesItem = new JMenuItem("Shuffle Tiles");
-	JMenuItem sortTilesItem = new JMenuItem("Sort Tiles");
-	JMenuItem recallTileItem = new JMenuItem("Recall Tile");
-	JMenuItem playSkipTurnItem = new JMenuItem("Play/Skip Turn");
-	JMenuItem endGameItem = new JMenuItem("End Game");
-	controlMenu.add(shuffleTilesItem);
-	controlMenu.add(sortTilesItem);
-	controlMenu.add(recallTileItem);
-	controlMenu.addSeparator();
-	controlMenu.add(playSkipTurnItem);
-	controlMenu.add(endGameItem);
-	shuffleTilesItem.addActionListener(new ActionListener() {
+//	JMenu controlMenu = new JMenu("Controls");
+////	mbar.add(controlMenu);
+//	JMenuItem shuffleTilesItem = new JMenuItem("Shuffle Tiles");
+//	JMenuItem sortTilesItem = new JMenuItem("Sort Tiles");
+//	JMenuItem recallTileItem = new JMenuItem("Recall Tile");
+//	JMenuItem playSkipTurnItem = new JMenuItem("Skip Turn");
+//	JMenuItem endGameItem = new JMenuItem("End Game");
+//	controlMenu.add(shuffleTilesItem);
+//	controlMenu.add(sortTilesItem);
+//	controlMenu.add(recallTileItem);
+//	controlMenu.addSeparator();
+//	controlMenu.add(playSkipTurnItem);
+//	controlMenu.add(endGameItem);
+	scorePanel.shuffleTiles.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		if (turn)
 		    p1.shuffle();
@@ -217,7 +197,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 		    p2.shuffle();
 	    }
 	});
-	sortTilesItem.addActionListener(new ActionListener() {
+	scorePanel.sortTiles.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		if (turn) {
 		    p1.tiles = sortTray(p1.tiles);
@@ -228,7 +208,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 		}
 	    }
 	});
-	recallTileItem.addActionListener(new ActionListener() {
+	scorePanel.RecallTiles.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		if (activeTile != null && activeTile.t == null) {
 		    if (turn) {
@@ -243,7 +223,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 			currentTiles.add(temp);
 		    }
 		    tilesPlaced--;
-		    statusBar.setMessage();
+//		    statusBar.setMessage();
 		    board.removeTile(activeTile.getXLoc(), activeTile.getYLoc());
 		    currentTiles.remove(activeTile);
 		    activeTile = null;
@@ -253,12 +233,12 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 		}
 	    }
 	});
-	playSkipTurnItem.addActionListener(new ActionListener() {
+	scorePanel.skipTurn.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		setTurn(!turn);
 	    }
 	});
-	endGameItem.addActionListener(new ActionListener() {
+	scorePanel.endGame.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		int decision = JOptionPane
 			.showConfirmDialog(null,
@@ -282,7 +262,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 
     private void makeEditMenu() {
 	JMenu editMenu = new JMenu("Edit");
-	mbar.add(editMenu);
+//	mbar.add(editMenu);
 	// Undo and redo are unimplemented
 	JMenuItem undoItem = new JMenuItem("Undo Turn");
 	JMenuItem redoItem = new JMenuItem("Redo Turn");
@@ -370,9 +350,9 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
          tilesPlaced = 0;
          score1 = 0;
          score2 = 0;
-         statusBar = new StatusBar(bag.getBagSize());
+//         statusBar = new StatusBar(bag.getBagSize());
          scorePanel = new ScorePanel();
-         mbar = new JMenuBar();
+//         mbar = new JMenuBar();
          tilesPlayed.clear();
          getUndoStack().clear();
          redoStack.clear();
@@ -414,8 +394,8 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 	    redoStack.clear();
 	    
 	    // Status bar
-	    statusBar.setBagCount(bag.getBagSize());
-	    statusBar.setMessage();
+//	    statusBar.setBagCount(bag.getBagSize());
+//	    statusBar.setMessage();
 	}
     }
 
@@ -477,7 +457,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 		    t = temp;
 	    }
 	}
-	statusBar.setMessage();
+//	statusBar.setMessage();
 	currentTiles.add(temp);
 	currentTiles.remove(activeTile);
 	activeTile = null;
@@ -659,7 +639,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     private void showTilePlacementError() {
 	Toolkit.getDefaultToolkit().beep();
 	JOptionPane.showMessageDialog(this,
-		"Illegal placement of your tiles. Please reposition.",
+		"Tiles in Incorrect Position",
 		"Illegal Tile Placement", JOptionPane.WARNING_MESSAGE);
     }
 
@@ -771,7 +751,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     private void showDictionaryError(String w) {
 	Toolkit.getDefaultToolkit().beep();
 	JOptionPane.showMessageDialog(this, "The word \"" + w
-		+ "\" does not exist in the Scrabble Dictionary.",
+		+ "\" does not exist",
 		"Word not found!", JOptionPane.WARNING_MESSAGE);
     }
 

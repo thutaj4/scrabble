@@ -1,10 +1,11 @@
-import javax.swing.JPanel;
-import javax.swing.BorderFactory;
-import java.awt.Point;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 
 public class Board extends JPanel implements Cloneable{
     public Tile[][] board;
@@ -17,11 +18,8 @@ public class Board extends JPanel implements Cloneable{
 	makeBoard();
 	setBoardTiles();
 	addBoard();
-	setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, new Color(
-		0x284942)));
+	setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.WHITE));
     }
-
-    /****************** Board Initialization Methods **********************/
     public void makeBoard() {
 	for (int k = 0; k < 225; k++) {
 	    board[k / 15][k % 15] = new BoardTile(new Point(k / 15, k % 15),
@@ -93,29 +91,22 @@ public class Board extends JPanel implements Cloneable{
 	revalidate();
     }
 
-    /**************************** Addition/Removal of Tiles *******************************/
     public void addTile(TrayTile t, int x, int y) {
 	board[x][y] = t;
 	refresh();
     }
 
     public void removeTile(int x, int y) {
-	System.out.println("Board.removeTile()");
 	setTileLists();
 	if (doubleLetter.contains(board[x][y])) {
-	    System.out.println("doubleletter");
 	    board[x][y] = new DoubleLetter(new Point(x, y));
 	} else if (tripleLetter.contains(board[x][y])) {
-	    System.out.println("tripleletter");
 	    board[x][y] = new TripleLetter(new Point(x, y));
 	} else if (doubleWord.contains(board[x][y])) {
-	    System.out.println("doubleword");
 	    board[x][y] = new DoubleWord(new Point(x, y));
 	} else if (tripleWord.contains(board[x][y])) {
-	    System.out.println("tripleword");
 	    board[x][y] = new TripleWord(new Point(x, y));
 	} else {
-	    System.out.println("boardtile");
 	    board[x][y] = new BoardTile(new Point(x, y), new Color(0xCBC4A8));
 	    refresh();
 	}

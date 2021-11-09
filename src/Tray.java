@@ -1,12 +1,10 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +19,6 @@ public class Tray extends JPanel implements Cloneable{
     private int score;
 
     public Tray(ArrayList<String> _letters, boolean _isP1) {
-	super(new BorderLayout());
 	tiles = new ArrayList<TrayTile>();
 	flow = new JPanel();
 	letters = _letters;
@@ -30,21 +27,24 @@ public class Tray extends JPanel implements Cloneable{
 	label.setVerticalAlignment(SwingConstants.CENTER);
 	label.setAlignmentX(CENTER_ALIGNMENT);
 	addSquares();
-	shuffle = new JButton("Shuffle!");
+//	shuffle = new JButton("Shuffle Tiles");
+//	shuffle.setBounds(new Rectangle(0, 0, 100, 0));
 	setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 	addBorderLayoutObjects();
-	shuffle.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-		// shuffle();
-		System.out.println("undoStack: " + Scrabble.s.getUndoStack().toString());
-	    }
-	});
+//	shuffle.addActionListener(new ActionListener() {
+//	    public void actionPerformed(ActionEvent e) {
+//		shuffle();
+////		System.out.println("undoStack: " + Scrabble.s.getUndoStack().toString());
+//	    }
+//	});
+//    }
     }
 
     public void addBorderLayoutObjects() {
-	add(BorderLayout.WEST, shuffle);
-	add(BorderLayout.CENTER, flow);
-	add(BorderLayout.EAST, label);
+	setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+//	add(shuffle);
+	add(flow);
+	add(label);
     }
 
     /******************** General Methods ********************/

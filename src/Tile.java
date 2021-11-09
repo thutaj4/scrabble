@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,6 +31,7 @@ public class Tile extends JPanel implements MouseListener, Cloneable {
     try {
       scrabbleFont = new File("resources/scrabble.ttf");
       font = Font.createFont(Font.TRUETYPE_FONT, scrabbleFont);
+      font = new Font("default", Font.PLAIN, 16);
     } catch (Exception e) {
       font = new Font("default", Font.PLAIN, 16);
     }
