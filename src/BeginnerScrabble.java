@@ -298,7 +298,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 			currentTurn = _turn;
 			scorePanel.setButton(currentTurn);
 			setActiveTile(null);
-			if (board.board[7][7] instanceof TrayTile)
+			if (board.board[5][5] instanceof TrayTile)
 				isFirstTurn = false;
 			currentTiles.clear();
 			tilesPlaced = 0;
@@ -443,6 +443,11 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 			System.out.println("Score2 is " + score2);
 			return true;
 		}
+		if(tilesPlayed.size() > 4) {
+			//show error
+			showTileTooLongError();
+			return false;
+		}
 		tilesPlayed = sortTiles(tilesPlayed);
 		if (!setVert()) {
 			showTilePlacementError();
@@ -551,6 +556,12 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 	private void showTilePlacementError() {
 		Toolkit.getDefaultToolkit().beep();
 		JOptionPane.showMessageDialog(this, "Tiles in Incorrect Position", "Illegal Tile Placement",
+				JOptionPane.WARNING_MESSAGE);
+	}
+	
+	private void showTileTooLongError() {
+		Toolkit.getDefaultToolkit().beep();
+		JOptionPane.showMessageDialog(this, "Words Must Be Of Length Four Or Shorter!",  "Too Many Tiles!",
 				JOptionPane.WARNING_MESSAGE);
 	}
 	
