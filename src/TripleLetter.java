@@ -9,7 +9,7 @@ public class TripleLetter extends BoardTile {
     private static final long serialVersionUID = 1L;
 
     public TripleLetter(Point _p) {
-	super(_p, new Color(0x3E9EB4));
+	super(_p, Color.blue);
 	drawText("TL");
     }
 

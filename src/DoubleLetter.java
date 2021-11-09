@@ -9,7 +9,7 @@ public class DoubleLetter extends BoardTile {
     private static final long serialVersionUID = 1L;
 
     public DoubleLetter(Point _p) {
-	super(_p, new Color(0xC2D7D2));
+	super(_p, Color.CYAN);
 	drawText("DL");
     }
 

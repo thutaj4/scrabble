@@ -32,6 +32,8 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     
     public static Scrabble s;
     public static Board board;
+    public String playerName1;
+    public String playerName2;
 //    private StatusBar statusBar;
     private JPanel bottom;
     public static Bag bag;
@@ -47,14 +49,17 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
     private Stack<GameState> undoStack, redoStack;
     private Set<String> dict;
 
-    public Scrabble() {
+    public Scrabble(String name1, String name2) {
 	
+    	playerName1 = name1;
+    	playerName2 = name2;
+    
 	// GUI
 	board = new Board();
 	bottom = new JPanel(new BorderLayout());
 	bag = new Bag();
-	p1 = new Tray(bag.getNewTray(), true);
-	p2 = new Tray(bag.getNewTray(), false);
+	p1 = new Tray(bag.getNewTray(), true, playerName1);
+	p2 = new Tray(bag.getNewTray(), false, playerName2);
 	tilesPlaced = 0;
 	score1 = 0;
 	score2 = 0;
@@ -197,7 +202,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 		    p2.shuffle();
 	    }
 	});
-	scorePanel.sortTiles.addActionListener(new ActionListener() {
+	/*scorePanel.sortTiles.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		if (turn) {
 		    p1.tiles = sortTray(p1.tiles);
@@ -207,7 +212,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 		    p2.refresh();
 		}
 	    }
-	});
+	});*/
 	scorePanel.RecallTiles.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		if (activeTile != null && activeTile.t == null) {
@@ -343,8 +348,8 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
          board.refresh();
          bottom = new JPanel(new BorderLayout());
          bag = new Bag();
-         p1 = new Tray(bag.getNewTray(), true);
-         p2 = new Tray(bag.getNewTray(), false);
+         p1 = new Tray(bag.getNewTray(), true, playerName1);
+         p2 = new Tray(bag.getNewTray(), false, playerName2);
          p1.refresh();
          p2.refresh();
          tilesPlaced = 0;
@@ -837,7 +842,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 
     /************************** Main *****************************/
     public static void main(String[] args) {
-	s = new Scrabble();
+	s = new Scrabble("test", "test2");
 	javax.swing.SwingUtilities.invokeLater(s);
     }
 }

@@ -9,7 +9,7 @@ public class DoubleWord extends BoardTile {
     private static final long serialVersionUID = 1L;
 
 public DoubleWord(Point _p) {
-    super(_p, new Color(0xe75480));
+    super(_p, Color.red);
     drawText("DW");
   }
   

@@ -62,11 +62,11 @@ public class ScorePanel extends JPanel implements Cloneable{
         shuffleTiles.setBounds(0, 24, 444, 23);
         panel.add(shuffleTiles);
         
-        sortTiles = new JButton("Sort Tiles");
+        /*sortTiles = new JButton("Sort Tiles");
         sortTiles.setMargin(new Insets(2, 5, 2, 14));
         sortTiles.setHorizontalAlignment(SwingConstants.LEFT);
         sortTiles.setBounds(0, 68, 444, 23);
-        panel.add(sortTiles);
+        panel.add(sortTiles);*/
         
         RecallTiles = new JButton("Recall Tile");
         RecallTiles.setMargin(new Insets(2, 5, 2, 14));

@@ -17,11 +17,13 @@ public class Tray extends JPanel implements Cloneable{
     private JPanel flow;
     private JButton shuffle;
     private int score;
+    public String playerName;
 
-    public Tray(ArrayList<String> _letters, boolean _isP1) {
+    public Tray(ArrayList<String> _letters, boolean _isP1, String _playerName) {
 	tiles = new ArrayList<TrayTile>();
 	flow = new JPanel();
 	letters = _letters;
+	playerName = _playerName;
 	score = 0;
 	label = new JLabel("Score: " + score + "   ");
 	label.setVerticalAlignment(SwingConstants.CENTER);
@@ -44,6 +46,9 @@ public class Tray extends JPanel implements Cloneable{
 	setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 //	add(shuffle);
 	add(flow);
+	
+	JLabel nameLabel = new JLabel(playerName + " ");
+	add(nameLabel);
 	add(label);
     }
 

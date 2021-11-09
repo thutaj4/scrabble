@@ -23,7 +23,7 @@ public class Board extends JPanel implements Cloneable{
     public void makeBoard() {
 	for (int k = 0; k < 225; k++) {
 	    board[k / 15][k % 15] = new BoardTile(new Point(k / 15, k % 15),
-		    new Color(0xCBC4A8));
+		    Color.white);
 	}
     }
 
@@ -84,6 +84,7 @@ public class Board extends JPanel implements Cloneable{
 		board[0][7], board[0][14], board[7][0], board[7][14],
 		board[14][0], board[14][7], board[14][14]));
     }
+    
 
     public void refresh() {
 	removeAll();
