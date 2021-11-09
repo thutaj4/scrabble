@@ -9,7 +9,7 @@ public class TripleWord extends BoardTile {
     private static final long serialVersionUID = 1L;
 
     public TripleWord(Point _p) {
-	super(_p, Color.red);
+	super(_p, Color.orange);
 	drawText("TW");
     }
 

@@ -9,7 +9,7 @@ public class BeginnerTripleWord extends BeginnerBoardTile {
     private static final long serialVersionUID = 1L;
 
     public BeginnerTripleWord(Point _p) {
-	super(_p, Color.red);
+	super(_p, Color.orange);
 	drawText("TW");
     }
 

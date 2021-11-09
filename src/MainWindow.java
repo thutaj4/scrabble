@@ -248,6 +248,8 @@ public class MainWindow {
 				}
 				//CREATE THE PLAYERS
 			//BeginnerGameWindow
+				BeginnerScrabble s = new BeginnerScrabble(playerOneTextField.getText(), playerTwoTextField.getText());
+				javax.swing.SwingUtilities.invokeLater(s);
 				BeginnerHelpWindow window = new BeginnerHelpWindow();
 			frame.setVisible(false);
 			}
