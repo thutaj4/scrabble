@@ -106,7 +106,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 	bottom.add(BorderLayout.CENTER, p2);
 //	bottom.add(BorderLayout.SOUTH, statusBar);
 	getContentPane().add(BorderLayout.CENTER, board);
-	getContentPane().add(BorderLayout.EAST, scorePanel);
+	getContentPane().add(BorderLayout.WEST, scorePanel);
 	getContentPane().add(BorderLayout.NORTH, p1);
 	getContentPane().add(BorderLayout.SOUTH, bottom);
     }
