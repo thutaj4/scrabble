@@ -1,26 +1,26 @@
 import java.util.ArrayList;
 
 public class BeginnerGameState {
-    public static Tray p1, p2;
+    public static BeginnerTray p1, p2;
     public static SmallBoard board;
     public static boolean isFirstTurn, isSaved;
     public static int score1, score2, tilesPlaced;
-    public static ArrayList<TrayTile> currentTiles, tilesPlayed;
-    public static TrayTile activeTile;
+    public static ArrayList<BeginnerTrayTile> currentTiles, tilesPlayed;
+    public static BeginnerTrayTile activeTile;
     public static Bag bag;
     public static String currentTurn;
 
-    public BeginnerGameState(Tray _p1, Tray _p2, SmallBoard _board) {
+    public BeginnerGameState(BeginnerTray _p1, BeginnerTray _p2, SmallBoard _board) {
 	p1 = _p1;
 	p2 = _p2;
 	board = _board;
     }
 
     @SuppressWarnings("unchecked")
-    public void setAll(Tray _p1, Tray _p2, SmallBoard _board, String _turn,
+    public void setAll(BeginnerTray _p1, BeginnerTray _p2, SmallBoard _board, String _turn,
 	    boolean _isFirstTurn, boolean _isSaved, int _score1, int _score2,
-	    int _tilesPlaced, ArrayList<TrayTile> _currentTiles,
-	    ArrayList<TrayTile> _tilesPlayed, TrayTile _activeTile, Bag _bag) {
+	    int _tilesPlaced, ArrayList<BeginnerTrayTile> _currentTiles,
+	    ArrayList<BeginnerTrayTile> _tilesPlayed, BeginnerTrayTile _activeTile, Bag _bag) {
 	//p1 = _p1;
 	//p2 = _p2;
 	p1 = _p1; // new Tray((ArrayList<TrayTile>)_p1.getTiles().clone(), true);

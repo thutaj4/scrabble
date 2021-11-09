@@ -23,7 +23,7 @@ public class SmallBoard extends JPanel implements Cloneable {
 
 	public void makeBoard() {
 		for (int k = 0; k < 121; k++) {
-			board[k / 11][k % 11] = new BoardTile(new Point(k / 11, k % 11), Color.white);
+			board[k / 11][k % 11] = new BeginnerBoardTile(new Point(k / 11, k % 11), Color.white);
 		}
 	}
 
@@ -40,22 +40,22 @@ public class SmallBoard extends JPanel implements Cloneable {
 		for (int k = 0; k < doubleLetter.size(); k++) {
 			int currentX = doubleLetter.get(k).getXLoc();
 			int currentY = doubleLetter.get(k).getYLoc();
-			board[currentX][currentY] = new DoubleLetter(new Point(currentX, currentY));
+			board[currentX][currentY] = new BeginnerDoubleLetter(new Point(currentX, currentY));
 		}
 		for (int k = 0; k < tripleLetter.size(); k++) {
 			int currentX = tripleLetter.get(k).getXLoc();
 			int currentY = tripleLetter.get(k).getYLoc();
-			board[currentX][currentY] = new TripleLetter(new Point(currentX, currentY));
+			board[currentX][currentY] = new BeginnerTripleLetter(new Point(currentX, currentY));
 		}
 		for (int k = 0; k < doubleWord.size(); k++) {
 			int currentX = doubleWord.get(k).getXLoc();
 			int currentY = doubleWord.get(k).getYLoc();
-			board[currentX][currentY] = new DoubleWord(new Point(currentX, currentY));
+			board[currentX][currentY] = new BeginnerDoubleWord(new Point(currentX, currentY));
 		}
 		for (int k = 0; k < tripleWord.size(); k++) {
 			int currentX = tripleWord.get(k).getXLoc();
 			int currentY = tripleWord.get(k).getYLoc();
-			board[currentX][currentY] = new TripleWord(new Point(currentX, currentY));
+			board[currentX][currentY] = new BeginnerTripleWord(new Point(currentX, currentY));
 		}
 	}
 
@@ -81,7 +81,7 @@ public class SmallBoard extends JPanel implements Cloneable {
 		revalidate();
 	}
 
-	public void addTile(TrayTile t, int x, int y) {
+	public void addTile(BeginnerTrayTile t, int x, int y) {
 		board[x][y] = t;
 		refresh();
 	}
@@ -89,15 +89,15 @@ public class SmallBoard extends JPanel implements Cloneable {
 	public void removeTile(int x, int y) {
 		setTileLists();
 		if (doubleLetter.contains(board[x][y])) {
-			board[x][y] = new DoubleLetter(new Point(x, y));
+			board[x][y] = new BeginnerDoubleLetter(new Point(x, y));
 		} else if (tripleLetter.contains(board[x][y])) {
-			board[x][y] = new TripleLetter(new Point(x, y));
+			board[x][y] = new BeginnerTripleLetter(new Point(x, y));
 		} else if (doubleWord.contains(board[x][y])) {
-			board[x][y] = new DoubleWord(new Point(x, y));
+			board[x][y] = new BeginnerDoubleWord(new Point(x, y));
 		} else if (tripleWord.contains(board[x][y])) {
-			board[x][y] = new TripleWord(new Point(x, y));
+			board[x][y] = new BeginnerTripleWord(new Point(x, y));
 		} else {
-			board[x][y] = new BoardTile(new Point(x, y), new Color(0xCBC4A8));
+			board[x][y] = new BeginnerBoardTile(new Point(x, y), new Color(0xCBC4A8));
 			refresh();
 		}
 		refresh();

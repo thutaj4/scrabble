@@ -31,17 +31,17 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 	public String playerName2;
 	private JPanel bottom;
 	public static Bag bag;
-	public Tray p1, p2;
+	public BeginnerTray p1, p2;
 
 	private BeginnerScorePanel scorePanel;
-	public TrayTile activeTile;
+	public BeginnerTrayTile activeTile;
 
 	public static int tilesPlaced, score1, score2;
 	public static boolean isVert, isFirstTurn, isSaved, dictEnabled, playerOneTurn, playerTwoTurn, playerThreeTurn,
 			playerFourTurn;
 
 	public static String currentTurn;
-	private ArrayList<TrayTile> currentTiles, tilesPlayed;
+	private ArrayList<BeginnerTrayTile> currentTiles, tilesPlayed;
 	private Stack<BeginnerGameState> undoStack, redoStack;
 	private Set<String> dict;
 
@@ -51,8 +51,8 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		board = new SmallBoard();
 		bottom = new JPanel(new BorderLayout());
 		bag = new Bag();
-		p1 = new Tray(bag.getNewTray(), true, playerName1);
-		p2 = new Tray(bag.getNewTray(), false, playerName2);
+		p1 = new BeginnerTray(bag.getNewTray(), true, playerName1);
+		p2 = new BeginnerTray(bag.getNewTray(), false, playerName2);
 		// totalPlayers = 2;
 
 		tilesPlaced = 0;
@@ -60,14 +60,14 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		score2 = 0;
 		scorePanel = new BeginnerScorePanel(p1, p2);
 
-		tilesPlayed = new ArrayList<TrayTile>();
+		tilesPlayed = new ArrayList<BeginnerTrayTile>();
 		// Dictionary
 		makeDictionary();
 
 		setUndoStack(new Stack<BeginnerGameState>());
 		redoStack = new Stack<BeginnerGameState>();
 		// Logic
-		currentTiles = new ArrayList<TrayTile>();
+		currentTiles = new ArrayList<BeginnerTrayTile>();
 		isFirstTurn = true;
 		isSaved = true;
 		dictEnabled = true;
@@ -140,11 +140,11 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 			public void actionPerformed(ActionEvent e) {
 				if (activeTile != null && activeTile.t == null) {
 					if (currentTurn.equals("playerOne")) {
-						TrayTile temp = new TrayTile(new Point(0, p1.tiles.size()), p1, activeTile.getText());
+						BeginnerTrayTile temp = new BeginnerTrayTile(new Point(0, p1.tiles.size()), p1, activeTile.getText());
 						p1.addTile(temp);
 						currentTiles.add(temp);
 					} else if (currentTurn.equals("playerTwo")) {
-						TrayTile temp = new TrayTile(new Point(0, p2.tiles.size()), p2, activeTile.getText());
+						BeginnerTrayTile temp = new BeginnerTrayTile(new Point(0, p2.tiles.size()), p2, activeTile.getText());
 						p2.addTile(temp);
 						currentTiles.add(temp);
 					}
@@ -270,8 +270,8 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		board.refresh();
 		bottom = new JPanel(new BorderLayout());
 		bag = new Bag();
-		p1 = new Tray(bag.getNewTray(), true, playerName1);
-		p2 = new Tray(bag.getNewTray(), false, playerName2);
+		p1 = new BeginnerTray(bag.getNewTray(), true, playerName1);
+		p2 = new BeginnerTray(bag.getNewTray(), false, playerName2);
 		p1.refresh();
 		p2.refresh();
 		tilesPlaced = 0;
@@ -306,13 +306,13 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 			if (currentTurn.equals("playerOne")) {
 				p1.setActive(true);
 				p2.setActive(false);
-				for (TrayTile t : p1.getTiles()) {
+				for (BeginnerTrayTile t : p1.getTiles()) {
 					currentTiles.add(t);
 				}
 			} else if (currentTurn.equals("playerTwo")) {
 				p1.setActive(false);
 				p2.setActive(true);
-				for (TrayTile t : p2.getTiles()) {
+				for (BeginnerTrayTile t : p2.getTiles()) {
 					currentTiles.add(t);
 				}
 			} 
@@ -326,9 +326,9 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		}
 	}
 	
-	public boolean inCurrentTiles(TrayTile tile) {// called in TrayTile
+	public boolean inCurrentTiles(BeginnerTrayTile tile) {// called in TrayTile
 		// mouseListener
-		for (TrayTile t : currentTiles) {
+		for (BeginnerTrayTile t : currentTiles) {
 			if (t == tile)
 				return true;
 		}
@@ -336,8 +336,8 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 	}
 	
 	
-	public boolean inTileList(Tile tile, ArrayList<TrayTile> list) {
-		for (TrayTile t : list) {
+	public boolean inTileList(Tile tile, ArrayList<BeginnerTrayTile> list) {
+		for (BeginnerTrayTile t : list) {
 			if (t == tile)
 				return true;
 		}
@@ -352,8 +352,8 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		return false;
 	}
 	
-	public void setActiveTile(TrayTile tile) {
-		for (TrayTile t : currentTiles) {
+	public void setActiveTile(BeginnerTrayTile tile) {
+		for (BeginnerTrayTile t : currentTiles) {
 			t.setTileBorder(Color.GRAY);
 			t.setColor(new Color(0xD7B288));
 		}
@@ -365,8 +365,8 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		}
 	}
 	
-	public void placeTile(BoardTile tile) {
-		TrayTile temp = new TrayTile(tile.getLoc(), null, activeTile.getText());
+	public void placeTile(BeginnerBoardTile tile) {
+		BeginnerTrayTile temp = new BeginnerTrayTile(tile.getLoc(), null, activeTile.getText());
 		if (activeTile.t != null) {
 			board.addTile(temp, tile.getXLoc(), tile.getYLoc());
 			if (currentTurn.equals("playerOne")) {
@@ -380,7 +380,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		} else {
 			board.removeTile(activeTile.getXLoc(), activeTile.getYLoc());
 			board.addTile(temp, tile.getXLoc(), tile.getYLoc());
-			for (TrayTile t : tilesPlayed) {
+			for (BeginnerTrayTile t : tilesPlayed) {
 				if (t.equals(activeTile))
 					t = temp;
 			}
@@ -407,7 +407,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		ArrayList<String> words = new ArrayList<String>();
 		int score = 0;
 		tilesPlayed.clear();
-		for (TrayTile t : currentTiles) {
+		for (BeginnerTrayTile t : currentTiles) {
 			if (t.t == null)
 				tilesPlayed.add(t);
 		}
@@ -450,7 +450,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		}
 		if (setVert()) {
 			if (isVert) {
-				for (TrayTile tile : tilesPlayed) {
+				for (BeginnerTrayTile tile : tilesPlayed) {
 					if (tilesPlayed.get(0).getXLoc() != tile.getXLoc()) {
 						showTilePlacementError();
 						return false;
@@ -459,7 +459,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 				words.add(makeVertWord(checkNorth(tilesPlayed.get(0)),
 						checkSouth(tilesPlayed.get(tilesPlayed.size() - 1)), tilesPlayed.get(0).getXLoc()));
 				score += makeScore(tilesPlayed.get(0), isVert);
-				score += makeScore(tilesPlayed, isVert);
+				score += makeScore(tilesPlayed.get(0), isVert);
 				for (int k = checkNorth(tilesPlayed.get(0)); k <= checkSouth(
 						tilesPlayed.get(tilesPlayed.size() - 1)); k++) {
 					if (!(board.board[tilesPlayed.get(0).getXLoc()][k] instanceof TrayTile)) {
@@ -471,7 +471,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 								checkEast(board.board[tilesPlayed.get(0).getXLoc()][k]), k));
 				}
 			} else {
-				for (TrayTile tile : tilesPlayed) {
+				for (BeginnerTrayTile tile : tilesPlayed) {
 					if (tilesPlayed.get(0).getYLoc() != tile.getYLoc()) {
 						showTilePlacementError();
 						return false;
@@ -480,7 +480,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 				words.add(makeHorizWord(checkWest(tilesPlayed.get(0)),
 						checkEast(tilesPlayed.get(tilesPlayed.size() - 1)), tilesPlayed.get(0).getYLoc()));
 				score += makeScore(tilesPlayed.get(0), isVert);
-				score += makeScore(tilesPlayed, isVert);
+				score += makeScore(tilesPlayed.get(0), isVert);
 				for (int k = checkWest(tilesPlayed.get(0)); k <= checkEast(
 						tilesPlayed.get(tilesPlayed.size() - 1)); k++) {
 					if (!(board.board[k][tilesPlayed.get(0).getYLoc()] instanceof TrayTile)) {
@@ -515,9 +515,9 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		return true;
 	}
 	
-	private boolean checkConnected(ArrayList<TrayTile> list) {
+	private boolean checkConnected(ArrayList<BeginnerTrayTile> list) {
 		int connectedTiles = 0;
-		for (TrayTile tile : list) {
+		for (BeginnerTrayTile tile : list) {
 			if (isFirstTurn && board.board[7][7] == tile)
 				return true;
 			if (isConnected(tile, list))
@@ -528,8 +528,8 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		return true;
 	}
 	
-	private boolean isConnected(TrayTile tile, ArrayList<TrayTile> list) {
-		for (TrayTile t : list) {
+	private boolean isConnected(BeginnerTrayTile tile, ArrayList<BeginnerTrayTile> list) {
+		for (BeginnerTrayTile t : list) {
 			int x = t.getXLoc();
 			int y = t.getYLoc();
 			if (x != 0 && (board.board[x - 1][y] instanceof TrayTile) && !inTileList(board.board[x - 1][y], list)) {
@@ -556,31 +556,31 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 	
 	
 	private int checkNorth(Tile tile) {
-		if (tile.getYLoc() == 0 || board.board[tile.getXLoc()][tile.getYLoc() - 1] instanceof BoardTile)
+		if (tile.getYLoc() == 0 || board.board[tile.getXLoc()][tile.getYLoc() - 1] instanceof BeginnerBoardTile)
 			return tile.getYLoc();
 		return checkNorth(board.board[tile.getXLoc()][tile.getYLoc() - 1]);
 	}
 	
 	private int checkSouth(Tile tile) {
-		if (tile.getYLoc() == 14 || board.board[tile.getXLoc()][tile.getYLoc() + 1] instanceof BoardTile)
+		if (tile.getYLoc() == 14 || board.board[tile.getXLoc()][tile.getYLoc() + 1] instanceof BeginnerBoardTile)
 			return tile.getYLoc();
 		return checkSouth(board.board[tile.getXLoc()][tile.getYLoc() + 1]);
 	}
 	
 	private int checkWest(Tile tile) {
-		if (tile.getXLoc() == 0 || board.board[tile.getXLoc() - 1][tile.getYLoc()] instanceof BoardTile)
+		if (tile.getXLoc() == 0 || board.board[tile.getXLoc() - 1][tile.getYLoc()] instanceof BeginnerBoardTile)
 			return tile.getXLoc();
 		return checkWest(board.board[tile.getXLoc() - 1][tile.getYLoc()]);
 	}
 	
 	private int checkEast(Tile tile) {
-		if (tile.getXLoc() == 14 || board.board[tile.getXLoc() + 1][tile.getYLoc()] instanceof BoardTile)
+		if (tile.getXLoc() == 14 || board.board[tile.getXLoc() + 1][tile.getYLoc()] instanceof BeginnerBoardTile)
 			return tile.getXLoc();
 		return checkEast(board.board[tile.getXLoc() + 1][tile.getYLoc()]);
 	}
 	
 	
-	private ArrayList<TrayTile> sortTiles(ArrayList<TrayTile> tiles) {
+	private ArrayList<BeginnerTrayTile> sortTiles(ArrayList<BeginnerTrayTile> tiles) {
 		if (tiles.size() > 1) {
 			if (isVert) {
 				for (int pointer = tiles.size(); pointer > 0; pointer--) {
@@ -603,15 +603,15 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		return tiles;
 	}
 	
-	private void swap(ArrayList<TrayTile> tiles, int k, int l) {
+	private void swap(ArrayList<BeginnerTrayTile> tiles, int k, int l) {
 
-		TrayTile a = tiles.get(k);
-		TrayTile b = tiles.get(l);
+		BeginnerTrayTile a = tiles.get(k);
+		BeginnerTrayTile b = tiles.get(l);
 		tiles.set(l, a);
 		tiles.set(k, b);
 	}
 	
-	private ArrayList<TrayTile> sortTray(ArrayList<TrayTile> tiles) {
+	private ArrayList<BeginnerTrayTile> sortTray(ArrayList<BeginnerTrayTile> tiles) {
 		if (tiles.size() > 1) {
 			for (int pointer = tiles.size(); pointer > 0; pointer--) {
 				for (int k = 0; k < pointer - 1; k++) {
@@ -660,7 +660,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 				JOptionPane.WARNING_MESSAGE);
 	}
 	
-	private int makeScore(TrayTile tile, boolean vert) {
+	private int makeScore(BeginnerTrayTile tile, boolean vert) {
 		int out = 0;
 		int multi = 1;
 		int x = tile.getXLoc();

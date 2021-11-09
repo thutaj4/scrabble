@@ -12,12 +12,12 @@ import javax.swing.SwingConstants;
 public class BeginnerScorePanel extends JPanel implements Cloneable {
 	private static final long serialVersionUID = 1L;
 	private JButton p1, p2;
-	private Tray p1Tray, p2Tray;
+	private BeginnerTray p1Tray, p2Tray;
 	public JButton shuffleTiles, sortTiles, RecallTiles, skipTurn, endGame;
 //    private JPanel logoPanel;
 //    private JLabel picLabel;
 
-	public BeginnerScorePanel(Tray _p1, Tray _p2) {
+	public BeginnerScorePanel(BeginnerTray _p1, BeginnerTray _p2) {
 		super(new BorderLayout());
 		setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 //	logoPanel = new JPanel();
