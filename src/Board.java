@@ -108,7 +108,7 @@ public class Board extends JPanel implements Cloneable{
 	} else if (tripleWord.contains(board[x][y])) {
 	    board[x][y] = new TripleWord(new Point(x, y));
 	} else {
-	    board[x][y] = new BoardTile(new Point(x, y), new Color(0xCBC4A8));
+	    board[x][y] = new BoardTile(new Point(x, y), Color.WHITE);
 	    refresh();
 	}
 	refresh();
