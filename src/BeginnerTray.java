@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +29,7 @@ public class BeginnerTray extends JPanel implements Cloneable{
 	label = new JLabel("Score: " + score + "   ");
 	label.setVerticalAlignment(SwingConstants.CENTER);
 	label.setAlignmentX(CENTER_ALIGNMENT);
+	label.setFont(new Font("default", Font.BOLD, 20));
 	addSquares();
 //	shuffle = new JButton("Shuffle Tiles");
 //	shuffle.setBounds(new Rectangle(0, 0, 100, 0));
@@ -47,7 +49,8 @@ public class BeginnerTray extends JPanel implements Cloneable{
 //	add(shuffle);
 	add(flow);
 	
-	JLabel nameLabel = new JLabel(playerName + " ");
+	JLabel nameLabel = new JLabel(playerName + "  |  ");
+	nameLabel.setFont(new Font("default", Font.BOLD, 20));
 	add(nameLabel);
 	add(label);
     }

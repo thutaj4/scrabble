@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,7 @@ public class Tray extends JPanel implements Cloneable{
 	playerName = _playerName;
 	score = 0;
 	label = new JLabel("Score: " + score + "   ");
+	label.setFont(new Font("default", Font.BOLD, 20));
 	label.setVerticalAlignment(SwingConstants.CENTER);
 	label.setAlignmentX(CENTER_ALIGNMENT);
 	addSquares();
@@ -47,7 +49,8 @@ public class Tray extends JPanel implements Cloneable{
 //	add(shuffle);
 	add(flow);
 	
-	JLabel nameLabel = new JLabel(playerName + " ");
+	JLabel nameLabel = new JLabel(playerName + "  |  ");
+	nameLabel.setFont(new Font("default", Font.BOLD, 20));
 	add(nameLabel);
 	add(label);
     }
