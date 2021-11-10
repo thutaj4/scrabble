@@ -12,7 +12,7 @@ public class SmallBoard extends JPanel implements Cloneable {
 	public ArrayList<Tile> doubleLetter, tripleLetter, doubleWord, tripleWord;
 
 	public SmallBoard() {
-		super(new GridLayout(15, 15));
+		super(new GridLayout(11, 11));
 		this.setBackground(Color.WHITE);
 		board = new Tile[11][11];
 		makeBoard();
