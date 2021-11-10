@@ -9,12 +9,12 @@ public class BeginnerTripleLetter extends BeginnerBoardTile {
     private static final long serialVersionUID = 1L;
 
     public BeginnerTripleLetter(Point _p) {
-	super(_p, Color.blue);
+	super(_p, new Color(0x016ee3));
 	drawText("TL");
     }
 
     public void drawText(String _text) {
-	textLabel = new JLabel();
+	textLabel = new JLabel(_text);
 	textLabel.setVerticalAlignment(SwingConstants.CENTER);
 	textLabel.setFont(font.deriveFont(Font.PLAIN, 16));
 	this.add(textLabel);

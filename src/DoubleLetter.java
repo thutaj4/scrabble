@@ -14,7 +14,7 @@ public class DoubleLetter extends BoardTile {
     }
 
     public void drawText(String _text) {
-	textLabel = new JLabel();
+	textLabel = new JLabel(_text);
 	textLabel.setVerticalAlignment(SwingConstants.CENTER);
 	textLabel.setFont(font.deriveFont(Font.PLAIN, 16));
 	this.add(textLabel);
