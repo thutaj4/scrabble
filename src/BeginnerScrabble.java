@@ -46,6 +46,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 	private Set<String> dict;
 
 	public BeginnerScrabble(String name1, String name2) {
+		javax.swing.SwingUtilities.invokeLater(this);
 		playerName1 = name1;
 		playerName2 = name2;
 		board = new SmallBoard();
@@ -750,10 +751,10 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		return multi * out;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		s = new BeginnerScrabble("test", "test2");
 		javax.swing.SwingUtilities.invokeLater(s);
-	}
+	}*/
 	
 	
 	

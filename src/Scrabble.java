@@ -56,7 +56,7 @@ public class Scrabble extends JFrame implements java.io.Serializable, Runnable {
 	private Set<String> dict;
 
 	public Scrabble(String name1, String name2, String name3, String name4) {
-
+		javax.swing.SwingUtilities.invokeLater(this);
 		playerName1 = name1;
 		playerName2 = name2;
 		playerName3 = name3;

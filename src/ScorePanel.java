@@ -52,32 +52,32 @@ public class ScorePanel extends JPanel implements Cloneable {
 //	this.add(BorderLayout.CENTER, endGame);
 		p1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Scrabble.s.setTurn("playerTwo");
+				MainWindow.se.setTurn("playerTwo");
 			}
 		});
 		p2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(p3Tray != null) {
-				Scrabble.s.setTurn("playerThree");
+				MainWindow.se.setTurn("playerThree");
 				}
 				else {
-					Scrabble.s.setTurn("playerOne");
+					MainWindow.se.setTurn("playerOne");
 				}
 			}
 		});
 		p3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(p4Tray != null) {
-					Scrabble.s.setTurn("playerFour");
+					MainWindow.se.setTurn("playerFour");
 					}
 					else {
-						Scrabble.s.setTurn("playerOne");
+						MainWindow.se.setTurn("playerOne");
 					}
 			}
 		});
 		p4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Scrabble.s.setTurn("playerOne");
+				MainWindow.se.setTurn("playerOne");
 			}
 		});
 	}

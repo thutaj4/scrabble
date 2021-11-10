@@ -46,12 +46,12 @@ public class BeginnerScorePanel extends JPanel implements Cloneable {
 //	this.add(BorderLayout.CENTER, endGame);
 		p1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BeginnerScrabble.s.setTurn("playerTwo");
+				MainWindow.s.setTurn("playerTwo");
 			}
 		});
 		p2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					BeginnerScrabble.s.setTurn("playerOne");
+					MainWindow.s.setTurn("playerOne");
 				
 			}
 		});

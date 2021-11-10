@@ -14,8 +14,8 @@ public class BoardTile extends Tile implements Cloneable{
     public void mouseExited(MouseEvent e) {}
 
     public void mousePressed(MouseEvent e) {
-	if (Scrabble.s.activeTile != null)
-	    Scrabble.s.placeTile(this);
+	if (MainWindow.se.activeTile != null)
+	    MainWindow.se.placeTile(this);
     }
     
     public void mouseReleased(MouseEvent e) {}

@@ -3,6 +3,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
@@ -20,11 +22,13 @@ public class MainWindow {
 	private JTextField playerTwoTextField;
 	private JTextField playerThreeTextField;
 	private JTextField playerFourTextField;
+	public static BeginnerScrabble s;
+	public static Scrabble se;
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		MainWindow window = new MainWindow();
 		window.frame.setVisible(true);
-    }*/
+    }
 	
 	public MainWindow() {
 		initialize();
@@ -248,10 +252,12 @@ public class MainWindow {
 				}
 				//CREATE THE PLAYERS
 			//BeginnerGameWindow
-				BeginnerScrabble s = new BeginnerScrabble(playerOneTextField.getText(), playerTwoTextField.getText());
-				javax.swing.SwingUtilities.invokeLater(s);
+				s = new BeginnerScrabble(playerOneTextField.getText(), playerTwoTextField.getText());
+				//javax.swing.SwingUtilities.invokeLater(s);
 				BeginnerHelpWindow window = new BeginnerHelpWindow();
+				
 			frame.setVisible(false);
+			frame.setEnabled(false);
 			}
 			else if(challengerButton.isSelected()) {
 				int amountOfPlayers = 0;
@@ -278,9 +284,10 @@ public class MainWindow {
 				}
 				
 				//ChallengerGameWindow
-				Scrabble s = new Scrabble(playerOneTextField.getText(),playerTwoTextField.getText(), playerThreeTextField.getText(),playerFourTextField.getText());
-				javax.swing.SwingUtilities.invokeLater(s);
+				se = new Scrabble(playerOneTextField.getText(),playerTwoTextField.getText(), playerThreeTextField.getText(),playerFourTextField.getText());
+				
 				frame.setVisible(false);
+				frame.setEnabled(false);
 			}
 			else {
 				lblYouMustSelect.setVisible(true);

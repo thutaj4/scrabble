@@ -50,12 +50,12 @@ public class BeginnerTrayTile extends Tile {
     @Override
     public void mousePressed(MouseEvent e) {
 	System.out.println(p);
-	if (BeginnerScrabble.s.activeTile == this) {
-	    BeginnerScrabble.s.setActiveTile(null);
+	if (MainWindow.s.activeTile == this) {
+	    MainWindow.s.setActiveTile(null);
 	    return;
 	}
-	if (BeginnerScrabble.s.inCurrentTiles(this))
-	    BeginnerScrabble.s.setActiveTile(this);
+	if (MainWindow.s.inCurrentTiles(this))
+	    MainWindow.s.setActiveTile(this);
     }
 
     public String toString() {
