@@ -467,7 +467,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 				score += makeScore(tilesPlayed.get(0), isVert);
 				for (int k = checkNorth(tilesPlayed.get(0)); k <= checkSouth(
 						tilesPlayed.get(tilesPlayed.size() - 1)); k++) {
-					if (!(board.board[tilesPlayed.get(0).getXLoc()][k] instanceof TrayTile)) {
+					if (!(board.board[tilesPlayed.get(0).getXLoc()][k] instanceof BeginnerTrayTile)) {
 						showTilePlacementError();
 						return false;
 					}
@@ -488,7 +488,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 				score += makeScore(tilesPlayed.get(0), isVert);
 				for (int k = checkWest(tilesPlayed.get(0)); k <= checkEast(
 						tilesPlayed.get(tilesPlayed.size() - 1)); k++) {
-					if (!(board.board[k][tilesPlayed.get(0).getYLoc()] instanceof TrayTile)) {
+					if (!(board.board[k][tilesPlayed.get(0).getYLoc()] instanceof BeginnerTrayTile)) {
 						showTilePlacementError();
 						return false;
 					}
@@ -523,7 +523,7 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 	private boolean checkConnected(ArrayList<BeginnerTrayTile> list) {
 		int connectedTiles = 0;
 		for (BeginnerTrayTile tile : list) {
-			if (isFirstTurn && board.board[7][7] == tile)
+			if (isFirstTurn && board.board[5][5] == tile)
 				return true;
 			if (isConnected(tile, list))
 				connectedTiles++;
@@ -537,15 +537,15 @@ public class BeginnerScrabble extends JFrame implements java.io.Serializable, Ru
 		for (BeginnerTrayTile t : list) {
 			int x = t.getXLoc();
 			int y = t.getYLoc();
-			if (x != 0 && (board.board[x - 1][y] instanceof TrayTile) && !inTileList(board.board[x - 1][y], list)) {
+			if (x != 0 && (board.board[x - 1][y] instanceof BeginnerTrayTile) && !inTileList(board.board[x - 1][y], list)) {
 				return true;
-			} else if (x != 14 && (board.board[x + 1][y] instanceof TrayTile)
+			} else if (x != 14 && (board.board[x + 1][y] instanceof BeginnerTrayTile)
 					&& !inTileList(board.board[x + 1][y], list)) {
 				return true;
-			} else if (y != 0 && (board.board[x][y - 1] instanceof TrayTile)
+			} else if (y != 0 && (board.board[x][y - 1] instanceof BeginnerTrayTile)
 					&& !inTileList(board.board[x][y - 1], list)) {
 				return true;
-			} else if (y != 14 && (board.board[x][y + 1] instanceof TrayTile)
+			} else if (y != 14 && (board.board[x][y + 1] instanceof BeginnerTrayTile)
 					&& !inTileList(board.board[x][y + 1], list)) {
 				return true;
 			}

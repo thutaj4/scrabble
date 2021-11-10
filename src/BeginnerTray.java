@@ -96,7 +96,7 @@ public class BeginnerTray extends JPanel implements Cloneable{
     public void refill() {
 	int size = tiles.size();
 	for (int k = 0; k < 7 - size; k++) {
-	    String newChar = Scrabble.s.bag.getLastChar();
+	    String newChar = BeginnerScrabble.s.bag.getLastChar();
 	    if (newChar != null) {
 		tiles.add(new BeginnerTrayTile(new Point(0, k), this, newChar));
 	    }
