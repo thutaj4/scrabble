@@ -79,7 +79,7 @@ public class MainWindow {
 	playerOneTextField.setVisible(false);
 	
 	playerTwoTextField = new JTextField();
-	playerTwoTextField.setColumns(10);
+	playerTwoTextField.setColumns(12);
 	playerTwoTextField.setVisible(false);
 	
 	playerThreeTextField = new JTextField();
@@ -221,16 +221,16 @@ public class MainWindow {
 				
 				playerOneTextField.setVisible(true);
 				playerTwoTextField.setVisible(true);
-				playerThreeTextField.setVisible(true);
-				playerFourTextField.setVisible(true);
+				// playerThreeTextField.setVisible(true);
+				// playerFourTextField.setVisible(true);
 				playerOneTextField.setText("");
 				playerTwoTextField.setText("");
 				playerThreeTextField.setText("");
 				playerFourTextField.setText("");
 				lblPlayerOneName.setVisible(true);
 				lblPlayerTwoName.setVisible(true);
-				lblPlayerThreeName.setVisible(true);
-				lblPlayerFourName.setVisible(true);
+				// lblPlayerThreeName.setVisible(true);
+				// lblPlayerFourName.setVisible(true);
 				
 				//get text from all 4, if field is blank dont create those last players, NEED 2 players
 				
